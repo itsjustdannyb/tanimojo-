@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tanimojo-</title>
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', path='../static/styles.css')}}"
+    />
+    <link rel="stylesheet" href="../static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p>who do you look like ?</p>
+      <div class="image_box">
+        <img
+          src="../../learnings/vhdl/31.jpg"
+          alt="a beautiful face"
+          id="preview"
+        />
+        <form action="/lookalike" method="post">
+          <label for="add_image"></label>
+          <br />
+          <input
+            type="file"
+            name="file"
+            id="add_image"
+            accept="image/*"
+            name="add_image"
+          />
+          <input type="submit" value="search" class="btn" />
+        </form>
+      </div>
+      <p>add an image</p>
+      <p>{{embedding}}</p>
+    </div>
+    <!-- <script src="../script.js"></script> -->
+  </body>
+</html>
