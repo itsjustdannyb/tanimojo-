@@ -3,7 +3,7 @@ import uvicorn
 import os
 from PIL import Image
 
-from generate_embeddings import get_image_embedding
+from utils import get_image_embedding
 
 # HTML
 from fastapi import Request, Form

@@ -12,30 +12,39 @@
     <link rel="stylesheet" href="../static/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <p>who do you look like ?</p>
-      <div class="image_box">
-        <img
-          src="../../learnings/vhdl/31.jpg"
-          alt="a beautiful face"
-          id="preview"
-        />
-        <form action="/lookalike" method="post">
-          <label for="add_image"></label>
-          <br />
-          <input
-            type="file"
-            name="file"
-            id="add_image"
-            accept="image/*"
-            name="add_image"
-          />
-          <input type="submit" value="search" class="btn" />
+    <!-- <div class="container" id="drop-area">
+      <div class="image_box" id="image-view">
+        <form action="/lookalike" method="post" enctype="multipart/form-data">
+          <label for="image">
+            <br />
+            <input type="file" name="image" id="input-file" accept="image/*" />
+          </label>
         </form>
       </div>
-      <p>add an image</p>
+      <p>{{embedding}}</p>
+    </div> -->
+
+    <div class="hero">
+      <form
+        action="/lookalike"
+        method="post"
+        enctype="multipart/form-data"
+        id="drop-area"
+      >
+        <label for="input-file">
+          <input type="file" accept="image/*" id="input-file" hidden />
+          <div id="img-view">
+            <img src="" />
+            <p>
+              drag and drop or click here <br />
+              to upload image
+            </p>
+            <span>upload any image from device</span>
+          </div>
+        </label>
+      </form>
       <p>{{embedding}}</p>
     </div>
-    <!-- <script src="../script.js"></script> -->
+    <script src="../script.js"></script>
   </body>
 </html>
