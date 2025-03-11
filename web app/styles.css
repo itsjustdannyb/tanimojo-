@@ -3,15 +3,22 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* 
 .hero {
   width: 100%;
   min-height: 100vh;
-  /* background: linear-gradient(#e7baff, #c2b6d9); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+} */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 #drop-area {
@@ -34,6 +41,10 @@
   background-size: cover;
 }
 
+#img-view:hover {
+  cursor: pointer;
+}
+
 #img-view span {
   display: block;
   font-size: 12px;
@@ -41,6 +52,21 @@
   margin-top: 15px;
 }
 
-form {
-  /* border: 2px #ccc solid; */
+p {
+  text-align: center;
+}
+
+.submitBtn {
+  margin-top: 10px;
+  width: 75px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.submitBtn:hover {
+  cursor: pointer;
+}
+
+p.results {
+  margin-top: 10px;
 }

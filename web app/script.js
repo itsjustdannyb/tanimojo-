@@ -2,8 +2,12 @@
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imageView = document.getElementById("img-view");
+const formEl = document.querySelector("form");
 
 inputFile.addEventListener("change", uploadImage);
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
 
 function uploadImage() {
   // uploaded file, you have to convert to image link

@@ -11,7 +11,7 @@ def main():
     index = get_embeddings(path)
 
 
-def get_embeddings(path, save_embeddings=False):
+def get_embeddings(path, save_embeddings=True, embedding_file_name:str="image_embeddings"):
     """
     Get the image embeddings for all the images in a file
     Args: 
@@ -49,7 +49,7 @@ def get_embeddings(path, save_embeddings=False):
 
     # save embeddings as a pickle file
     if save_embeddings == True:
-        with open("image_embeddings.pkl", "wb") as f:
+        with open(f"{embedding_file_name}.pkl", "wb") as f:
             pickle.dump(image_embeddings_names, f)
 
     return image_embeddings_names
@@ -66,17 +66,29 @@ def get_image_embedding(image_path):
         embeddings (List(int))
     """
 
-    
     print("creating image embedding...")
+
+    # try:
+    #     if type(image) == "str":
+    #         embedding = DeepFace.represent(img_path=image)[0]["embedding"]
+    #         print("embedding created")
+    #         return embedding
+    #     else:
+    #         print("embedding created")
+    #         return image
+        
+    # except (ValueError):
+    #     print("bad image! ")
 
     try:
         embedding = DeepFace.represent(img_path=image_path)[0]["embedding"]
+        return embedding
     except (ValueError):
         print("bad image! ")
 
     print("embedding created")
         
-    return embedding
+    # return embedding
 
 
 def search(img_embeddings_names, query, dimensions=4096, search_space=5):
@@ -106,10 +118,11 @@ def search(img_embeddings_names, query, dimensions=4096, search_space=5):
     index.add(embeddings_np)
 
     # get image embeddings
-    image_embedding = np.array(get_image_embedding(query)).astype("float32").reshape(1,-1)
-
-    # search 
-    distances, indices = index.search(image_embedding, search_space)
+    if type(query) == "str":
+        image_embedding = np.array(get_image_embedding(query)).astype("float32").reshape(1,-1)
+        distances, indices = index.search(image_embedding, search_space)
+    else:
+        distances, indices = index.search(query, search_space)
 
     print("------------ done ------------------")
 
